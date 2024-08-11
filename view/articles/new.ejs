@@ -5,11 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Blog Website</title>
+    <style>
+      body {
+         background: linear-gradient(to bottom right, #ec9769, #e45db0);
+         /* Background with a shade of #2c6f94 */
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+         flex-direction: column;
+      }
+
+      .heading h1 {
+         color: #2c6f94;
+         /* Heading color matching the gradient */
+         margin-bottom: 1rem;
+         font-size: 2rem;
+         /* Reduced size */
+         text-align: center;
+         transform: translate(0, -40%);
+         font-size: calc(10vw + 0.5rem);
+         font-family: "frozen", serif;
+         background-image: url( " https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=600 ");
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-size: contain;
+         position: relative;
+         text-align: center;
+         -webkit-text-stroke: 1px black;
+
+
+         filter:
+            drop-shadow(0 0 2px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 2px rgba(190, 90, 90, 0.7)) drop-shadow(0 0 30px rgba(193, 91, 91, 0.8)) drop-shadow(0 0 30px rgba(102, 36, 39, 0.8));
+      }
+
+
+/* 
+      .container {
+         background: rgba(255, 255, 255, 0.8);
+         padding: 2rem;
+         border-radius: 2rem;
+         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+         max-width: 500px;
+         width: 100%;
+         text-align: center;
+      } */
+
+      .form-control {
+         display: block;
+         width: 100%;
+         padding: 0.75rem 1rem;
+         font-size: 1rem;
+         font-weight: 400;
+         line-height: 1.5;
+         color: #2c6f94;
+         /* Text color matching your theme */
+         background-color: rgba(255, 255, 255, 0.8);
+         /* Semi-transparent background */
+         background-clip: padding-box;
+         border: 1px solid #ced4da;
+         border-radius: 0.5rem;
+         /* Slightly more rounded corners */
+         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+         /* Subtle shadow for depth */
+         transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+
+      .form-control:focus {
+         color: #2c6f94;
+         /* Keep text color consistent */
+         background-color: #fff;
+         /* Solid white background on focus */
+         border-color: #2c6f94;
+         /* Border color matching your theme */
+         outline: none;
+         box-shadow: 0 0 0 0.2rem rgba(44, 111, 148, 0.25);
+         /* Custom shadow on focus */
+      }
+
+      .form-control::placeholder {
+         color: #6c757d;
+         opacity: 0.8;
+         /* Slightly dimmed placeholder text */
+      }
+
+      .form-control:disabled,
+      .form-control[readonly] {
+         background-color: rgba(233, 236, 239, 0.8);
+         /* Light gray for disabled/read-only */
+         opacity: 1;
+         cursor: not-allowed;
+         /* Change cursor for disabled inputs */
+      }
+   </style>
 </head>
 <body>
+   <div class="heading">
+      <h1 class="mb-4">Create New Article</h1>
+   </div>
       <div class="container">
-        <br>
-         <h1 class="mb-4">Create New Article</h1>
+         
          <form action="/articles" method="POST">
             <%- include('form_field') %>
          </form>
