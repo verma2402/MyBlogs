@@ -1,0 +1,212 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Blog Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4"> My Blogs </h1>
+        <a href="/articles/new" class="btn btn-success">Create Article</a>
+
+        <% articles.forEach(article=>{%>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%=article.title%>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%=article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%=article.description%>
+                    </div>
+                    <a href="articles/<%=article.slug%>" class="btn btn-primary">Read More</a>
+                    <a href="articles/edit/<%= article.id%>" class="btn btn-info">Edit</a>
+                    <form action="/articles/<%=article.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+            <%})%>
+    </div>
+</body>
+
+</html> -->
+
+    
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Blog Website</title>
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Abril+Fatface|Droid+Serif:400,700,400italic,700italic);
+
+html, body {
+    height: 100%;
+    background:  #c18d71;
+    font-family: 'Droid Serif', serif;
+}
+
+.blog-card {
+    max-width: 550px;
+    width: 50%;
+    height: 500px;
+    position: relative;
+    font-family: 'Droid Serif', serif;
+    color: #fff;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all 0.4s;
+    background: url(https://unsplash.it/600/800?image=1061) center no-repeat;
+    background-size: cover;
+}
+
+.blog-card a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.blog-card .color-overlay {
+    background: rgba(64, 84, 94, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    transition: background 0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
+}
+
+.blog-card .gradient-overlay {
+    background-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.6) 21%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 350px;
+    left: 0;
+    z-index: 15;
+}
+
+.blog-card:hover {
+    box-shadow: 0px 18px 20px -9px rgba(0, 10, 30, 0.75);
+}
+
+.blog-card:hover .card-info {
+    opacity: 1;
+    bottom: 100px;
+}
+
+.blog-card:hover .color-overlay {
+    background: rgba(64, 64, 70, 0.8);
+}
+
+.blog-card:hover .title-content {
+    margin-top: 70px;
+}
+
+.title-content {
+    text-align: center;
+    margin: 170px 0 0 0;
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.6s;
+}
+
+.blog-card h3, h1 {
+    font-size: 1.9em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-family: 'Abril Fatface', serif;
+    margin-bottom: 0;
+    display: inline-block;
+}
+
+.card-info {
+    box-sizing: border-box;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    margin: 0 auto;
+    padding: 0 50px;
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 20;
+    opacity: 0;
+    transition: bottom 0.64s, opacity 0.63s cubic-bezier(0.33, 0.66, 0.66, 1);
+}
+
+.card-info a {
+    display: block;
+    width: 100px;
+    margin: 15px auto;
+    background: #fff;
+    color: #444;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-size: 0.8em;
+}
+
+.card-info a:hover {
+    background: #8e7c49;
+    color: #fff;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4">Bharat Intern Blog Website</h1>
+        <a href="/articles/new" class="btn btn-success">Create Article</a>
+
+        <% articles.forEach(article => { %>
+            <div class="blog-card spring-fever mt-4">
+                <div class="title-content">
+                    <h3><a href="#"> <%= article.title %> </a></h3>
+                    <div class="intro"> <a href="#">Inspiration</a> </div>
+                </div>
+                <div class="card-info">
+                    <%= article.description %>
+                    <a href="articles/<%= article.slug %>">Read More<span class="licon icon-arr icon-black"></span></a>
+                </div>
+                <div class="utility-info">
+                    <ul class="utility-list">
+                        <li><span class="licon icon-like"></span><a href="#">2</a></li>
+                        <li><span class="licon icon-com"></span><a href="#">12</a></li>
+                        <li><span class="licon icon-dat"></span><%= article.createdAt.toLocaleDateString() %></li>
+                    </ul>
+                </div>
+                <div class="gradient-overlay"></div>
+                <div class="color-overlay"></div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+
+</html> -->
